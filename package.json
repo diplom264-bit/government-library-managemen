@@ -1,0 +1,18 @@
+{
+  "name": "government-library-management",
+  "version": "1.0.0",
+  "description": "Library Management System for Government Libraries of India",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "build": "cd frontend && npm install && npm run build",
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\""
+  },
+  "keywords": ["library", "management", "government", "india"],
+  "author": "Government Library System",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

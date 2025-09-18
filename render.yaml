@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: library-frontend
+    env: node
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: web
+    name: library-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_HOST
+        fromDatabase:
+          name: library-db
+          property: host
+      - key: DB_USER
+        fromDatabase:
+          name: library-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: library-db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: library-db
+          property: database
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: library-db
+    databaseName: library_management
+    user: postgres
