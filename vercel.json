@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend/**"]
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "backend/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "JWT_SECRET": "vercel_jwt_secret_key_2024",
+    "DB_HOST": "localhost",
+    "DB_PORT": "5432",
+    "DB_NAME": "library_management",
+    "DB_USER": "postgres",
+    "DB_PASSWORD": "password"
+  }
+}
